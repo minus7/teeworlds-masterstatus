@@ -67,7 +67,6 @@ def query_master(name, addr, loop, timeout=1):
 	return masterinfo
 
 def html_print(masterinfos, file=sys.stdout):
-	print('<div id="masterstatus">', file=file)
 	print("<table><thead><tr><th>Name</th><th>Status</th><th>Servers</th><th>Latency</th></tr></thead><tbody>", file=file)
 	for masterinfo in masterinfos:
 		if not masterinfo.server_count or not masterinfo.latency:
@@ -75,7 +74,6 @@ def html_print(masterinfos, file=sys.stdout):
 		else:
 			print("<tr><td>{name}</td><td>{status}</td><td>{servers}</td><td>{lat_ms:.0f}ms</td></tr>".format(name=masterinfo.name, status=masterinfo.status, servers=masterinfo.server_count, lat_ms=(masterinfo.latency*1000)), file=file)
 	print("</tbody></table>", file=file)
-	print('</div>', file=file)
 
 @asyncio.coroutine
 def update(output_filename, loop):
