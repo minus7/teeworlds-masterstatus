@@ -91,12 +91,13 @@ def update(output_filename, loop):
 @asyncio.coroutine
 def main(loop):
 	p = argparse.ArgumentParser()
+	p.add_argument("-i", "--interval", type=int, default=10, help="refresh interval in seconds (default: %(default)s")
 	p.add_argument("output", help="html output file name")
 	args = p.parse_args()
 
 	while True:
 		yield from update(args.output, loop)
-		yield from asyncio.sleep(10)
+		yield from asyncio.sleep(args.interval)
 
 if __name__ == "__main__":
 	loop = asyncio.get_event_loop()
