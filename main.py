@@ -48,11 +48,8 @@ class MasterCountProtocol(asyncio.DatagramProtocol):
 
 
 masters = {
-	"master1": ("master1.teeworlds.com", 8300),
 	"master2": ("master2.teeworlds.com", 8300),
 	"master3": ("master3.teeworlds.com", 8300),
-	"master4": ("master4.teeworlds.com", 8300),
-	"website": ("teeworlds.com", 8300),
 }
 
 @asyncio.coroutine
